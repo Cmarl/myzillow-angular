@@ -1,11 +1,20 @@
-h3 LIST
-
-table.table.table-striped
-  thead
-    tr
-      th Neighborhood
-      th Homes Available
-  tbody
-    tr(ng-repeat='neighborhood in neighborhoods')
-      td {{neighborhood.name}}
-      td {{neighborhood.qty}}
+.container-fluid#mapListPage
+  .row
+    .col-sm-8
+      #map
+    .col-sm-4
+      ul#homeList
+        li(ng-repeat='home in homes')
+          .listing
+            .row
+              .col-xs-5
+                .photo: img(ng-src='{{checkImg(home.photo)}}').listImg.thumbnail
+              .col-xs-7
+                .info
+                  h4 {{home.description}}
+                  p {{home.address}}
+                  p {{home.price}}
+                  h3 contact:
+                  p {{home.name}}
+                  p {{home.number}}
+                  p {{home.email}}

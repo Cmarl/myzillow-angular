@@ -1,0 +1,10 @@
+h3 ADD A NEIGHBORHOOD
+
+.container
+  .row
+    .form-group
+      label(for='neighborhood') Neighborhood Name
+      input#neighborhood.form-control(type='text' ng-model='neighborhood.name')
+    .form-group
+      button.form-control.btn.btn-info(ng-click='create(neighborhood)') Add Neighborhood
+      button.form-control.btn.btn-primary(ui-sref='neighborhoods.list') Browse Existing Neighborhoods

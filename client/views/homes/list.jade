@@ -1,0 +1,11 @@
+h3 LIST
+
+table.table.table-striped
+  thead
+    tr
+      th Neighborhood
+      th Homes Available
+  tbody
+    tr(ng-repeat='neighborhood in neighborhoods')
+      td {{neighborhood.name}}
+      td {{neighborhood.qty}}

@@ -1,0 +1,22 @@
+nav.navbar.navbar-default(ng-controller='NavCtrl')
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed(data-toggle="collapse", data-target="#navbar")
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href='/') myZillow
+    #navbar.collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar(ng-show='activeUser')
+        li: a(ui-sref='home'): i.fa.fa.fa-child &nbsp; Welcome
+        li: a(ui-sref='homes'): i.fa.fa-street-view &nbsp; Homes
+        li: a(ui-sref='neighborhoods.list'): i.fa.fa-building &nbsp; Featured Places
+        li: a(ui-sref='neighborhoods.add'): i.fa.fa-home &nbsp; Neighborhoods
+        li: button.btn.btn-danger(ng-click='logout()'): i.fa.fa-sign-out &nbsp; {{displayName}}
+      ul.nav.navbar-nav.navbar(ng-hide='activeUser')
+        li: a(ui-sref='home'): i.fa.fa.fa-child &nbsp; Welcome
+        li: a(ui-sref='homes'): i.fa.fa-street-view &nbsp; Homes
+        li: a(ui-sref='neighborhoods.list'): i.fa.fa-building &nbsp; Featured Places
+        li: a(ui-sref='register'): i.fa.fa-user-plus &nbsp; Register
+        li: a(ui-sref='login'): i.fa.fa-key &nbsp; Login

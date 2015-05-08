@@ -7,15 +7,33 @@ h3.text-center MANAGE YOUR LISTINGS
         label(for='home') Description
         input#home.form-control(type='textarea' ng-model='home.description')
       .form-group
-        label(for='address') Address
+        label(for='address') Street Address
         input#address.form-control(type='text' ng-model='home.address')
+      .form-group
+        label(for='address') Town/City
+        input#address.form-control(type='text' ng-model='home.city')
+      .form-group
+        label(for='address') Zip/Postal Code
+        input#address.form-control(type='text' ng-model='home.code')
+      .form-group
+        label(for='address') Country
+        input#address.form-control(type='text' ng-model='home.country')
       .form-group
         label(for='photoUpload') Add Photo
         input#photoUpload.form-control(type='file' ng-model='home.photo' onchange='angular.element(this).scope().previewFile()')
-        img(src='', height='150', alt='Image preview...')
+        img(src='' height='150', alt='Image preview...')
       .form-group
         label(for='price') Asking Price
         input#price.form-control(type='number' ng-model='home.price')
+      .form-group
+        label(for='price') Number of Bedrooms
+        input#price.form-control(type='number' ng-model='home.beds')
+      .form-group
+        label(for='price') Number of Bathrooms
+        input#price.form-control(type='number' ng-model='home.baths')
+      .form-group
+        label(for='price') Square Footage
+        input#price.form-control(type='number' ng-model='home.sqft')
       .form-group
         label(for='name') Seller's Name
         input#email.form-control(type='text' ng-model='home.name')
@@ -26,7 +44,8 @@ h3.text-center MANAGE YOUR LISTINGS
         label(for='phone') Contact Phone Number
         input#phone.form-control(type='tel' ng-model='home.phone')
       .form-group
-        button.form-control.btn.btn-primary(ng-click='create(home)') Add New Listing
+        button.form-control.btn.btn-primary(ng-hide='editing' ng-click='create(home)') Add New Listing
+        button.form-control.btn.btn-primary(ng-show='editing' ng-click='saveChanges(home)') Save Changes
     .col-sm-5.col-sm-offset-1
       ul#dashboardHomeList
         li(ng-repeat='home in homes')

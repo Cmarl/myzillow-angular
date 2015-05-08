@@ -9,6 +9,12 @@ angular.module('myzillow')
     addMarkers();
   });
 
+  $scope.search = function(query){
+    Map.geocode(query, function(data){
+      console.log(data);
+    });
+  };
+
   var markers = [];
 
   function addMarkers(){

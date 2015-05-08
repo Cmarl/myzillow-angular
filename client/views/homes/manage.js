@@ -2,16 +2,30 @@
 'use strict';
 
 angular.module('myzillow')
-.controller('ManageCtrl', function($scope, Home, $state, Map){
+.controller('ManageCtrl', function($scope, Home, $state, Map, $window){
   Home.getHouses('/' + $scope.activeUser.uid)
   .then(function(response){
-    console.log(response);
     $scope.homes = response.data.homes;
   });
 
   $scope.edit = function(home){
-    
-  }
+    $scope.editing = true;
+    $scope.home = home;
+  };
+
+  $scope.destroy = function(home){
+    Home.destroy(home)
+    .then(function(response){
+      $window._.remove($scope.homes, function(h){
+        return h._id === response.data._id;
+      });
+    });
+  };
+
+  $scope.saveChanges = function(home){
+    $scope.editing = false;
+    Home.edit(home);
+  };
 
   $scope.create = function(home){
     Map.geocode(home.address, function(results){

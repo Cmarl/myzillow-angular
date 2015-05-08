@@ -1,7 +1,7 @@
 .container-fluid#mapListPage
   .row#searchBar
     .col-xs-6
-      input(type='text' ng-model='query' placeholder='City/State/Zip').form-control
+      input(type='text' ng-model='query' placeholder='City/State/Zip' autofocus='true').form-control
     .col-xs-2
       button.btn.btn-danger(ng-click='search(query)').form-control: i.fa.fa-search
   .row
@@ -13,12 +13,14 @@
           .listing
             .row
               .col-xs-5
-                .photo: img(ng-src='{{checkImg(home.photo)}}').listImg.thumbnail
+                .photo: img(ng-src='{{checkImg(home.photo)}}' ng-mouseenter='toggleBounce(house)' ng-mouseleave='toggleBounce(house)').listImg.thumbnail
               .col-xs-7
                 .info
                   h4 {{home.description}}
-                  p {{home.address}}
-                  p {{home.price}}
+                  p {{home.fullAddress}}
+                  p {{home.price | currency}}
+                  p {{home.beds}} bedrooms, {{home.baths}} bathrooms
+                  p {{home.sqft}} square feet
                   h3 contact:
                   p {{home.name}}
                   p {{home.number}}

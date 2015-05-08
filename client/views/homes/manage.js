@@ -22,15 +22,39 @@ angular.module('myzillow')
     });
   };
 
+  $scope.removeArea = function(query){
+    Map.geocode(query, function(data){
+      var latS = data[0].geometry.location.A;
+      var lngS = data[0].geometry.location.F;
+      var latMin = latS - 0.2;
+      var latMax = latS + 0.2;
+      var lngMin = lngS - 0.2;
+      var lngMax = lngS + 0.2;
+      Home.getHouses('/' + $scope.activeUser.uid)
+      .then(function(response){
+        response.data.homes.forEach(function(home){
+          if (((home.lat <= latMax) && (home.lat >= latMin) && (home.lng <= lngMax) && (home.lng >= lngMin))){
+            Home.destroy(home);
+          }
+        });
+        $scope.homes = $window._.remove(response.data.homes, function(home){
+          return !((home.lat <= latMax) && (home.lat >= latMin) && (home.lng <= lngMax) && (home.lng >= lngMin));
+        });
+        console.log($scope.homes);
+      });
+    });
+  };
+
   $scope.saveChanges = function(home){
     $scope.editing = false;
     Home.edit(home);
   };
 
   $scope.create = function(home){
-    Map.geocode(home.address, function(results){
+    var fullAddress = [home.address, home.city, home.mailcode, home.country].join(', ');
+    Map.geocode(fullAddress, function(results){
       if(results && results.length){
-        home.address = results[0].formatted_address;
+        home.fullAddress = results[0].formatted_address;
         home.lat = results[0].geometry.location.lat();
         home.lng = results[0].geometry.location.lng();
         home.uid = $scope.activeUser.uid;

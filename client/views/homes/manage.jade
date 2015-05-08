@@ -14,7 +14,7 @@ h3.text-center MANAGE YOUR LISTINGS
         input#address.form-control(type='text' ng-model='home.city')
       .form-group
         label(for='address') Zip/Postal Code
-        input#address.form-control(type='text' ng-model='home.code')
+        input#address.form-control(type='text' ng-model='home.mailcode')
       .form-group
         label(for='address') Country
         input#address.form-control(type='text' ng-model='home.country')
@@ -47,6 +47,13 @@ h3.text-center MANAGE YOUR LISTINGS
         button.form-control.btn.btn-primary(ng-hide='editing' ng-click='create(home)') Add New Listing
         button.form-control.btn.btn-primary(ng-show='editing' ng-click='saveChanges(home)') Save Changes
     .col-sm-5.col-sm-offset-1
+      .row#searchBar
+        .col-xs-10
+          label(for='remove') Remove Homes In Area
+          input#remove(type='text' ng-model='query' placeholder='Location').form-control
+        .col-xs-2
+          label(for='remove') &nbsp;
+          button.btn.btn-danger#remove(ng-click='removeArea(query)').form-control: i.fa.fa-bolt
       ul#dashboardHomeList
         li(ng-repeat='home in homes')
           .listing

@@ -5,7 +5,7 @@ angular.module('myzillow')
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-  .state('home', {url: '/', templateUrl: '/views/general/home.html'})
+  .state('home', {url: '/', templateUrl: '/views/general/home.html', controller: 'HomeCtrl'})
   .state('register', {url: '/register', templateUrl: '/views/users/users.html', controller: 'UsersCtrl'})
   .state('login', {url: '/login', templateUrl: '/views/users/users.html', controller: 'UsersCtrl'})
   .state('homes', {url: '/homes', templateUrl: 'views/homes/homes.html', abstract: true})

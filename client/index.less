@@ -3,6 +3,10 @@
   width: 100%;
 }
 
+#searchBar {
+  margin-bottom: 8px;
+}
+
 #map {
   min-width: 100%;
   min-height:86vh;
@@ -28,3 +32,39 @@
     }
   }
 }
+#dashboardHomeList{
+  height: 100vh;
+  overflow: scroll;
+
+  li {
+    list-style-type: none;
+  }
+  .listing{
+    background-color: white;
+    border-bottom: 2px #cc6262 solid;
+    color: #1e1e1e;
+    margin-top: 5px;
+    padding: 3px;
+
+    .listImg{
+      max-width: 150px;
+    }
+  }
+}
+// bootstrap overrides
+
+.btn-danger {
+  background-color: #cc6262;
+  border-color: #cc6262;
+}
+a.btn-danger:hover {
+  background-color: #A9E3DC
+}
+.btn-primary {
+  background-color: #A9E3DC;
+  border-color: #A9E3DC;
+}
+
+.navbar a:hover {
+  background-color: #A9E3DC;
+  }

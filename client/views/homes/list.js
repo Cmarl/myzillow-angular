@@ -3,7 +3,7 @@
 angular.module('myzillow')
 .controller('ListCtrl', function(Home, $scope, Map){
 
-  Home.getAll()
+  Home.getHouses('')
   .then(function(response){
     $scope.homes = response.data.homes;
     addMarkers();

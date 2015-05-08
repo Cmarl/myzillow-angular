@@ -9,8 +9,8 @@ angular.module('myzillow')
     return $http.post(nodeUrl + '/homes', home);
   };
 
-  Home.getAll = function(){
-    return $http.get(nodeUrl + '/homes');
+  Home.getHouses = function(params){
+    return $http.get(nodeUrl + '/homes' + params );
   };
 
   return Home;
